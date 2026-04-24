@@ -1,37 +1,55 @@
-.*
+# Token files
+token
+*.token
+.env
+
+# Python
+__pycache__/
 *.py[cod]
-# *.jpg
-*.jpeg
-# *.png
-*.gif
-*.bmp
-*.mp4
-*.mov
-*.mkv
-*.log
-*.zip
-*.pt
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Model checkpoints and outputs (large files)
 *.pth
 *.ckpt
 *.safetensors
-*.json
-# *.txt
-*.backup
-*.pkl
-*.html
-*.pdf
-*.whl
-cache
-__pycache__/
-storage/
-samples/
-!.gitignore
-!requirements.txt
-.DS_Store
-*DS_Store
-google/
-Wan2.1-T2V-14B/
-Wan2.1-T2V-1.3B/
-Wan2.1-I2V-14B-480P/
-Wan2.1-I2V-14B-720P/
-poetry.lock
+Wan2.1-*/
+models/
+outputs/
+*.mp4
+*.avi
+*.mov
+
+# Data
+data/
+
+# Logs
+*.log
