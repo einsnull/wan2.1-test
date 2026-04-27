@@ -73,9 +73,11 @@ RUN pip install --no-cache-dir \
     modelscope \
     einops
 
-# Install flash-attn (may take a while to compile)
-# Note: flash-attn requires specific CUDA version, skip if compilation fails
-RUN pip install --no-cache-dir flash-attn || echo "flash-attn installation skipped"
+# Install flash-attn with no-build-isolation.
+# This matches the runtime fix validated in container and avoids assertion failures
+# in attention kernels when running without --t5_cpu.
+RUN pip install --no-cache-dir flash-attn --no-build-isolation && \
+    python -c "import flash_attn; print(f'flash-attn version: {flash_attn.__version__}')"
 
 # Set CUDA architecture for various GPUs
 ENV TORCH_CUDA_ARCH_LIST="7.0;7.5;8.0;8.6;8.9;9.0+PTX"
